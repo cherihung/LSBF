@@ -1,0 +1,21 @@
+.box { border-color: rgba(153, 0, 51, 0); background: #3f00bf; }
+
+h1 [class^="social-icons-circle-"]:before, h1 [class*=" social-icons-circle-"]:before { font-family: Verdana; }
+
+p { /* width: 1em + 2px; invalid operation*/ line-height: 22px; }
+
+.mixin, .o { color: #000; height: 100px; }
+
+.o { width: 100%; }
+
+.myfont { font-family: Myraid; font-size: 10px; font-weight: normal; }
+
+a.mybutton, a.mybutton:visited { display: inline-block; *display: inline; color: white; font-size: 1em; text-decoration: none; cursor: pointer; vertical-align: middle; background-color: #990000; background-image: url("http://d.cyhung.net/images/btn-overlay.png"); background-image: -moz-linear-gradient(top, #cc0000, #990000); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#cc0000), to(#990000)); background-image: -webkit-linear-gradient(top, #cc0000, #990000); background-image: -o-linear-gradient(top, #cc0000, #990000); background-image: linear-gradient(to bottom, #cc0000, #990000); background-repeat: repeat-x; border-radius: 5px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); border-bottom: 1px solid rgba(0, 0, 0, 0.25); -webkit-transition: background 0.1s linear; -moz-transition: background 0.1s linear; transition: background 0.1s linear; padding: 5px 10px; width: 100px; position: relative; left: 50%; margin-left: -55px; }
+
+a.mybutton:hover { background-color: #e6e6e6; color: #333333; text-decoration: none; background-position: 0 -99px; }
+
+a.mybutton1:hover { background-color: #990000; color: #333333; text-decoration: none; background-position: 0 -99px; }
+
+a.mybutton2:hover { background-color: #e6e6e6; color: black; text-decoration: none; background-position: 0 -99px; }
+
+.myshadow { box-shadow: 1px 2px 1px black; -moz-box-shadow: 1px 2px 1px black; -webkit-box-shadow: 1px 2px 1px black; }
