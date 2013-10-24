@@ -1,0 +1,46 @@
+{
+	"title": "LESS: An Overview",
+	"style-topics": [
+		{
+			"name": "Variables",
+			"id": "var",
+			"code":"<p><pre><code class='language-scss'>@color: #000000;\n@size:1em;\n@boolean:true\n@font:\"Helvetica Neue\", \"Helvetica\", Helvetica, Arial, sans-serif;\n@calculation: darken(@color, 15%);\n@cursor: \"crosshair\"</code></pre></p><p><pre><code class='language-scss'>font: @size @font;</code></pre></p>",
+			"compiled": "<p>Compiles to:<pre><code class='language-css'>font: 1em \"Helvetica Neue\", \"Helvetica\", Helvetica, Arial, sans-serif;</code></pre></p>"
+		},
+		{
+			"name": "Nesting",
+			"id": "nes",
+			"code":"<p><pre><code class='language-scss'>div {\n h1 {\n   padding: 2em;\n\n    span {\n      font-weight: normal;\n    }\n\n }\n a {\n   display: none;\n }\n}</code></pre></p>",
+			"compiled": "Compiles to:<pre><code class='language-css'>div h1 { padding: 2em; }\ndiv h1 span { font-weight: normal; }\ndiv a { display: none; }</code></pre></p>"
+		},
+		{
+			"name": "Imports",
+			"id": "ipt",
+			"code":"<p><pre><code class='language-scss'>@import \"lib\";/* file imported and processed */\n\n.class {\n   @import \"lib\";/* file imported to class */\n}\n\n@import \"lib\" screen and (max-width: 400px);/* output will be wrapped in @media screen and (max-width: 400px)... */</code></pre></p>To output CSS @import<p><pre><code class='language-scss'>@import (css) url(\"my.css\");</code></pre></p>",
+			"compiled": "Compiles to:<pre><code class='language-css'>@import url(\"my.css\");</code></pre></p>"
+		},
+		{
+			"name": "Mixins",
+			"id": "mix",
+			"code":"<h4>(now with :extend feature like Sass @extend)</h4><p><pre><code class='language-scss'>.mixin {\n color: #000;\n height: 100px; \n}\n.o {\n.mixin;\n width: 100%;\n}\n/* using extend */\n.e {\n &:extend(.mixin all);\n width: 100%;\n}</code></pre></p>",
+			"compiled": "<p>Compiles to:<pre><code class='language-css'>.mixin, .e {\n color: #000;\n height: 100px;\n}\n.o {\n color: #000;\n height: 100px;\n width: 100%;\n }\n.e {\n width: 100%;\n}</code></pre></p>"
+		},
+		{
+			"name": "Parametric Mixins",
+			"id": "par",
+			"code":"<p><pre><code class='language-scss'>.mybuttonHover (@bgdcolor:#e6e6e6, @fontcolor:#333333) {\n background-color: @bgdcolor;\n color: @fontcolor;\n text-decoration:none;\n background-position: 0 -99px;\n}\na.mybutton:hover {\n .mybuttonHover();\n}\na.mybutton1:hover {\n .mybuttonHover(#990000);\n}\na.mybutton2:hover {\n .mybuttonHover(@fontcolor:#000000);\n}\n.box-shadow (@x:0; @y:0; @blur:1px; @color:#000000) {\n box-shadow: @arguments;/* @argument is special to LESS */\n -moz-box-shadow: @arguments;\n -webkit-box-shadow: @arguments;\n}\n.myshadow {\n .box-shadow(1px; 2px) !important;/* using !import this way is special to LESS */\n}\n.box-shadow2 (@shadow...) {\n box-shadow: @shadow;\n -moz-box-shadow: @shadow;\n -webkit-box-shadow: @shadow;\n}\n.myshadow2 {\n .box-shadow2(1px 2px 1px #030303) !important;\n}</code></pre></p>",
+			"compiled": "<p>Compiles to:<pre><code class='language-css'>a.mybutton:hover {\n background-color: #e6e6e6;\n color: #333333;\n text-decoration: none;\n background-position: 0 -99px;\n}\na.mybutton1:hover {\n background-color: #990000;\n color: #333333;\n text-decoration: none;\n background-position: 0 -99px;\n}\na.mybutton2:hover {\n background-color: #e6e6e6;\n color: #000000;\n text-decoration: none;\n background-position: 0 -99px;\n}\n.myshadow {\n box-shadow: 1px 2px 1px #000000 !important;\n -moz-box-shadow: 1px 2px 1px #000000 !important;\n -webkit-box-shadow: 1px 2px 1px #000000 !important;\n}\n.myshadow2 {\n box-shadow: 1px 2px 1px #030303 !important;\n -moz-box-shadow: 1px 2px 1px #030303 !important;\n -webkit-box-shadow: 1px 2px 1px #030303 !important;\n}</code></pre></p><p class='text-info'>***You can nest mixins and pass variables to one another***</p>"
+		},
+		{
+			"name": "Functions/Operations",
+			"id": "fnc",
+			"code":"<h3><a href=\"http://lesscss.org/#reference\">Full reference here</a></h3><p>Math calculation such as floor(@var). Color manipulation such as lighten(@color, 10%), convert HEX to HSL/RGBA, or <b>reproduce photoshop filter effect</b> such as overlay, softlight, multiply, screen. Has a range of built-in math functions such as cos, sin, sqrt, pi, mod etc.<pre><code class='language-scss'>@c: #990033;\n.box {\n border-color: rgba(red(@c), green(@c), blue(@c), 0);\n}\n.box {\n background-color: overlay(@c, #000000);\n}</code></pre></p><p><pre><code class='language-scss'>//calculate line-height based on pearsonified.com golden ratio\n.lineht(@fontsize, @width, @gr: 1.61803) {\n   line-height: ceil((@gr - (1/(2*@gr))*(1 - (@width/(pow(@fontsize*@gr,2))))) * @fontsize);\n}\np {\n  width: 1em + 2px;\n .lineht(12px,600px);\n}</code></pre></p>",
+			"compiled": "<p>Compiles to:<pre><code class='language-css'>.box {\n border-color: rgba(153, 0, 51, 0);\n}\n.box {\n background-color: #330000;\n}</code></pre></p><p><pre><code class='language-css'>p {\n width: 3em; /*weird*/ \n line-height: 22px;\n}</code></pre></p>"
+		},
+		{
+			"name": "Switch/Guards",
+			"id": "swi",
+			"code": "<h3><a href=\"http://lesscss.org/#-pattern-matching-and-guard-expressions\">Full reference here</a></h3><p>In place of usual programming conditionals (if/else), LESS has switch and guards. You can also define the same mixins multiple times with variations in arguments. LESS will use the applicable one.<pre><code class='language-scss'>.BeforeClass(@fp, @fn) {\n [class^=\"social-icons-@{fp}-\"]:before,\n [class*=\"social-icons-@{fp}-\"]:before {\n font-family: @fn;\n}\n}\n.BeforeClass(@fn) {\n font-family: @fn;\n}</code></pre></p>"
+		}
+	]
+}

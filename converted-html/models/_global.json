@@ -1,0 +1,27 @@
+{
+	"title": "LESS, SASS, Foundation, Bootstrap: A Comparison Demo",
+	"DocDate": "10.2013",
+	"Version": "1.0.0",
+	"topics": [
+		{
+			"name": "LESS",
+			"siteurl": "http://lesscss.org/",
+			"github": "https://github.com/less/less.js/"
+		},
+		{
+			"name": "SASS",
+			"siteurl": "http://sass-lang.com/",
+			"github": "https://github.com/nex3/sass"
+		},
+		{
+			"name": "Foundation",
+			"siteurl": "http://foundation.zurb.com/",
+			"github": "https://github.com/zurb/foundation"
+		},
+		{
+			"name": "Bootstrap",
+			"siteurl": "http://getbootstrap.com/",
+			"github": "https://github.com/twbs/bootstrap"
+		}
+	]
+}

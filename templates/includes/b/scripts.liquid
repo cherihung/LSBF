@@ -1,0 +1,13 @@
+<script src="//code.jquery.com/jquery.min.js"></script>
+{{ "bootstrap.min.js" | asset_url | script_tag }}
+<script>
+var s = skrollr.init();
+skrollr.menu.init(s, {
+    animate: true,
+    easing: 'sqrt',
+    duration: function(currentTop, targetTop) {
+        return 500;
+        //return Math.abs(currentTop - targetTop) * 10;
+    },
+});
+</script>

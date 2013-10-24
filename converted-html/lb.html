@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> LESS: An Overview</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="assets/js/skrollrfull.min.js"></script>    
+        <link href="assets/css/bootstrap-app.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="assets/css/prism.min.css" rel="stylesheet" type="text/css" media="all" />
+        <script src="assets/js/vendor/prism.min.js"></script>
+        <style>
+            body {
+                padding-top: 60px;
+            }
+        </style>
+    </head>
+    <body>
+            
+<!--NAV-->
+<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!--<a class="navbar-brand" href="#">TOPICS</a>-->
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+		<li><a href="index.html">HOME</a></li>
+	    
+		   <li><a href="#var">Variables</a></li>
+	   
+		   <li><a href="#nes">Nesting</a></li>
+	   
+		   <li><a href="#ipt">Imports</a></li>
+	   
+		   <li><a href="#mix">Mixins</a></li>
+	   
+		   <li><a href="#par">Parametric Mixins</a></li>
+	   
+		   <li><a href="#fnc">Functions/Operations</a></li>
+	   
+		   <li><a href="#swi">Switch/Guards</a></li>
+	   
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </div>
+<!--NAV-->
+<div class="container">
+<!--INTRO-->
+	<div class="row" id="intro" data-menu-offset="-100">
+	    <div class="col-sm-6 col-lg-12">
+		<h3>LESS</h3>
+		<div class="well well-lg"><p>Bootstrap is the major framework that uses LESS. It can be compiled on client-side (less.js) or server-side (node.js). All CSS syntax are valid in LESS too. It is also well-maintained and an active community. It is not as powerful as Sass but in exchange you get a simpler syntax that feel more akin to CSS syntax. The recent 1.4 release added many minor features and fixed some bugs. <a href="http://lesscss.org/">Official site</a> | <a href="https://github.com/less/less.js/">On Github</a></p></div>
+	    </div>
+	</div>
+<!--INTRO-->
+<!--SECTIONS-->
+	
+	<div class="row" id="var" data-menu-offset="-70">
+	    <div class="col-lg-12" style="font-weight: bold">
+		<h1>Variables</h1>
+		<p><pre><code class='language-scss'>@color: #000000;
+@size:1em;
+@boolean:true
+@font:"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+@calculation: darken(@color, 15%);
+@cursor: "crosshair"</code></pre></p><p><pre><code class='language-scss'>font: @size @font;</code></pre></p>
+		<p>Compiles to:<pre><code class='language-css'>font: 1em "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;</code></pre></p>
+	    </div>
+		  <hr/>
+	</div>
+	
+	<div class="row" id="nes" data-menu-offset="-70">
+	    <div class="col-lg-12" style="font-weight: bold">
+		<h1>Nesting</h1>
+		<p><pre><code class='language-scss'>div {
+ h1 {
+   padding: 2em;
+
+    span {
+      font-weight: normal;
+    }
+
+ }
+ a {
+   display: none;
+ }
+}</code></pre></p>
+		Compiles to:<pre><code class='language-css'>div h1 { padding: 2em; }
+div h1 span { font-weight: normal; }
+div a { display: none; }</code></pre></p>
+	    </div>
+		  <hr/>
+	</div>
+	
+	<div class="row" id="ipt" data-menu-offset="-70">
+	    <div class="col-lg-12" style="font-weight: bold">
+		<h1>Imports</h1>
+		<p><pre><code class='language-scss'>@import "lib";/* file imported and processed */
+
+.class {
+   @import "lib";/* file imported to class */
+}
+
+@import "lib" screen and (max-width: 400px);/* output will be wrapped in @media screen and (max-width: 400px)... */</code></pre></p>To output CSS @import<p><pre><code class='language-scss'>@import (css) url("my.css");</code></pre></p>
+		Compiles to:<pre><code class='language-css'>@import url("my.css");</code></pre></p>
+	    </div>
+		  <hr/>
+	</div>
+	
+	<div class="row" id="mix" data-menu-offset="-70">
+	    <div class="col-lg-12" style="font-weight: bold">
+		<h1>Mixins</h1>
+		<h4>(now with :extend feature like Sass @extend)</h4><p><pre><code class='language-scss'>.mixin {
+ color: #000;
+ height: 100px; 
+}
+.o {
+.mixin;
+ width: 100%;
+}
+/* using extend */
+.e {
+ &:extend(.mixin all);
+ width: 100%;
+}</code></pre></p>
+		<p>Compiles to:<pre><code class='language-css'>.mixin, .e {
+ color: #000;
+ height: 100px;
+}
+.o {
+ color: #000;
+ height: 100px;
+ width: 100%;
+ }
+.e {
+ width: 100%;
+}</code></pre></p>
+	    </div>
+		  <hr/>
+	</div>
+	
+	<div class="row" id="par" data-menu-offset="-70">
+	    <div class="col-lg-12" style="font-weight: bold">
+		<h1>Parametric Mixins</h1>
+		<p><pre><code class='language-scss'>.mybuttonHover (@bgdcolor:#e6e6e6, @fontcolor:#333333) {
+ background-color: @bgdcolor;
+ color: @fontcolor;
+ text-decoration:none;
+ background-position: 0 -99px;
+}
+a.mybutton:hover {
+ .mybuttonHover();
+}
+a.mybutton1:hover {
+ .mybuttonHover(#990000);
+}
+a.mybutton2:hover {
+ .mybuttonHover(@fontcolor:#000000);
+}
+.box-shadow (@x:0; @y:0; @blur:1px; @color:#000000) {
+ box-shadow: @arguments;/* @argument is special to LESS */
+ -moz-box-shadow: @arguments;
+ -webkit-box-shadow: @arguments;
+}
+.myshadow {
+ .box-shadow(1px; 2px) !important;/* using !import this way is special to LESS */
+}
+.box-shadow2 (@shadow...) {
+ box-shadow: @shadow;
+ -moz-box-shadow: @shadow;
+ -webkit-box-shadow: @shadow;
+}
+.myshadow2 {
+ .box-shadow2(1px 2px 1px #030303) !important;
+}</code></pre></p>
+		<p>Compiles to:<pre><code class='language-css'>a.mybutton:hover {
+ background-color: #e6e6e6;
+ color: #333333;
+ text-decoration: none;
+ background-position: 0 -99px;
+}
+a.mybutton1:hover {
+ background-color: #990000;
+ color: #333333;
+ text-decoration: none;
+ background-position: 0 -99px;
+}
+a.mybutton2:hover {
+ background-color: #e6e6e6;
+ color: #000000;
+ text-decoration: none;
+ background-position: 0 -99px;
+}
+.myshadow {
+ box-shadow: 1px 2px 1px #000000 !important;
+ -moz-box-shadow: 1px 2px 1px #000000 !important;
+ -webkit-box-shadow: 1px 2px 1px #000000 !important;
+}
+.myshadow2 {
+ box-shadow: 1px 2px 1px #030303 !important;
+ -moz-box-shadow: 1px 2px 1px #030303 !important;
+ -webkit-box-shadow: 1px 2px 1px #030303 !important;
+}</code></pre></p><p class='text-info'>***You can nest mixins and pass variables to one another***</p>
+	    </div>
+		  <hr/>
+	</div>
+	
+	<div class="row" id="fnc" data-menu-offset="-70">
+	    <div class="col-lg-12" style="font-weight: bold">
+		<h1>Functions/Operations</h1>
+		<h3><a href="http://lesscss.org/#reference">Full reference here</a></h3><p>Math calculation such as floor(@var). Color manipulation such as lighten(@color, 10%), convert HEX to HSL/RGBA, or <b>reproduce photoshop filter effect</b> such as overlay, softlight, multiply, screen. Has a range of built-in math functions such as cos, sin, sqrt, pi, mod etc.<pre><code class='language-scss'>@c: #990033;
+.box {
+ border-color: rgba(red(@c), green(@c), blue(@c), 0);
+}
+.box {
+ background-color: overlay(@c, #000000);
+}</code></pre></p><p><pre><code class='language-scss'>//calculate line-height based on pearsonified.com golden ratio
+.lineht(@fontsize, @width, @gr: 1.61803) {
+   line-height: ceil((@gr - (1/(2*@gr))*(1 - (@width/(pow(@fontsize*@gr,2))))) * @fontsize);
+}
+p {
+  width: 1em + 2px;
+ .lineht(12px,600px);
+}</code></pre></p>
+		<p>Compiles to:<pre><code class='language-css'>.box {
+ border-color: rgba(153, 0, 51, 0);
+}
+.box {
+ background-color: #330000;
+}</code></pre></p><p><pre><code class='language-css'>p {
+ width: 3em; /*weird*/ 
+ line-height: 22px;
+}</code></pre></p>
+	    </div>
+		  <hr/>
+	</div>
+	
+	<div class="row" id="swi" data-menu-offset="-70">
+	    <div class="col-lg-12" style="font-weight: bold">
+		<h1>Switch/Guards</h1>
+		<h3><a href="http://lesscss.org/#-pattern-matching-and-guard-expressions">Full reference here</a></h3><p>In place of usual programming conditionals (if/else), LESS has switch and guards. You can also define the same mixins multiple times with variations in arguments. LESS will use the applicable one.<pre><code class='language-scss'>.BeforeClass(@fp, @fn) {
+ [class^="social-icons-@{fp}-"]:before,
+ [class*="social-icons-@{fp}-"]:before {
+ font-family: @fn;
+}
+}
+.BeforeClass(@fn) {
+ font-family: @fn;
+}</code></pre></p>
+		
+	    </div>
+		  <hr/>
+	</div>
+	
+<!--SECTIONS-->	
+</div>
+
+              <script src="//code.jquery.com/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script>
+var s = skrollr.init();
+skrollr.menu.init(s, {
+    animate: true,
+    easing: 'sqrt',
+    duration: function(currentTop, targetTop) {
+        return 500;
+        //return Math.abs(currentTop - targetTop) * 10;
+    },
+});
+</script>
+    </body>
+</html>

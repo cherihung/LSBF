@@ -1,0 +1,117 @@
+$c: #990033;
+.box {
+border-color: rgba($c, 0);
+background: mix(#f00, #00f, 25%);
+}
+
+@mixin BeforeClass($fp, $fn) {
+	@if $fp != null {
+            [class^="social-icons-#{$fp}-"]:before,
+            [class*=" social-icons-#{$fp}-"]:before {
+                font-family: $fn;
+        }
+	} @else {
+                font-family: $fn;
+		font-size: 1em;
+	}
+}
+h1 {
+	@include BeforeClass("circle",Verdana);
+}
+
+@function power ($x, $n) {
+    $ret: 1;
+    
+    @for $i from 1 through $n {
+            $ret: $ret * $x;
+     } 
+        
+    @return $ret;
+}
+//calculate line-height based on pearsonified.com golden ratio
+@mixin lineht($fontsize, $width, $gr: 1.61803) {
+	line-height: ceil(($gr - (1/(2*$gr))*(1 - ($width/(power($fontsize*$gr,2))))) * $fontsize)+px;
+	
+}
+p {
+  /* width: 1em + 2px; invalid operation*/
+  @include lineht(12,600);
+}
+.mixin {
+	color: #000;
+	height: 100px;
+}
+
+.o {
+	@extend .mixin;
+	width: 100%;
+}
+
+.myfont {
+  font: {
+    family: Myraid;
+    size: 10px;
+    weight: normal;
+  }
+}
+
+//buttons
+@mixin mybutton ($bgdcolor, $fontcolor: #ffffff, $font-size: 12px, $corner: 5px, $padding-tb: 5px , $padding-lr: 10px, $width: 100px) {
+	display: inline-block;
+	*display: inline;
+	color: $fontcolor;
+        font-size: $font-size;
+	text-decoration: none;
+	cursor: pointer;
+	vertical-align: middle;
+	background-color: $bgdcolor;
+	background-image: url('http://d.cyhung.net/images/btn-overlay.png');
+	background-image: -moz-linear-gradient(top, lighten($bgdcolor, 10%), $bgdcolor);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(lighten($bgdcolor, 10%)), to($bgdcolor));
+	background-image: -webkit-linear-gradient(top, lighten($bgdcolor, 10%), $bgdcolor);
+	background-image: -o-linear-gradient(top, lighten($bgdcolor, 10%), $bgdcolor);
+	background-image: linear-gradient(to bottom, lighten($bgdcolor, 10%), $bgdcolor);
+	background-repeat: repeat-x;
+	border-radius: $corner;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25); 
+	-webkit-transition: background 0.1s linear;
+	-moz-transition: background 0.1s linear;
+	transition: background 0.1s linear;
+	padding: $padding-tb $padding-lr;
+	width: $width;
+	position: relative;
+	left: 50%;
+	margin-left: -($width + $padding-lr)/2;
+}	
+@mixin mybuttonHover ($bgdcolor:#e6e6e6, $fontcolor:#333333) { 
+	background-color: $bgdcolor; 
+	color: $fontcolor;
+	text-decoration:none;
+        background-position: 0 -99px;
+}
+a.mybutton, a.mybutton:visited {
+    @include mybutton(#990000,#fff,1em);
+}
+a.mybutton:hover {
+    @include mybuttonHover();
+}
+a.mybutton1:hover {
+    @include mybuttonHover(#990000);
+}
+a.mybutton2:hover {
+    @include mybuttonHover($fontcolor:#000000);
+}
+
+
+
+@mixin box-shadow($shadows...) {
+  box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+}
+
+.myshadow {
+  @include box-shadow(1px 2px 1px #000);
+}

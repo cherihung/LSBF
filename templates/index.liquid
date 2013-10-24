@@ -1,0 +1,72 @@
+{% block content %} 
+    	<div data-magellan-expedition="fixed">
+	    <dl class="sub-nav">
+		{% for i in (1..3) %}
+		    <dd data-magellan-arrival="{{ i }}"><a href="#{{ i }}">{{ i }}</a></dd>
+	       {% endfor %}
+	    </dl>
+	</div><!--end magellan-->
+    <div class="row" id="block">
+        <div class="large-12 columns">
+	    <ul class="landing-button-group lang">
+	      <li class="small-12 large-6"><a href="lb" class="large less">LESS</a></li>
+	      <li class="small-12 large-6"><a href="sf" class="large sass">SASS</a></li>
+	    </ul>
+	    <ul class="landing-button-group framework">
+	      <li class="small-12 large-6"><a href="lb.html" class="large boot">Bootstrap</a></li>
+	      <li class="small-12 large-6"><a href="sf.html" class="large foun">Foundation</a></li>
+	    </ul>
+  <!--UNCOMMENT TO SEE DEFAULT FOUNDATION BUTTONS-->
+    <ul class="button-group">
+    <li><a href="lb.html" class="large button less">LESS</a></li>
+    <li><a href="sf.html" class="large button sass">SASS</a></li>
+  </ul>
+  <ul class="button-group">
+    <li><a href="lb.html" class="large button boot">Bootstrap</a></li>
+    <li><a href="sf.html" class="large button foun">Foundation</a></li>
+  </ul>-->
+        </div>
+	    </div>
+    <!--UNCOMMENT TO PLAY WITH PUSH AND PULL
+    <div class="row">
+  <div class="large-10 push-2 columns">10</div>
+  <div class="small-2 pull-10 columns">2, last</div>
+</div>-->
+    <div class="row">
+	<div class="small-6 large-centered small-centered columns" data-magellan-destination="1" id="1" data-menu-offset="-50">
+	 <p>{{ global.title }}</p>
+	 <h1>Agenda</h1>
+	   <p> <h3>LESS 1.4 vs Sass 3.2</h3>
+	    <h5>General Comparision</h5>
+	    <h5>Syntax Comparision</h5>
+	   </p>
+	   <p>
+	    <h3>Foundation 4 vs Bootstrap 3</h3>
+	    <h5>Package Size</h5>
+	    <h5>Components</h5></p>
+	   <p>
+	    <h3>LESS/Sass in Frameworks</h3>
+	   </p>
+	</div>
+    </div>
+
+<div class="large-12 columns" data-magellan-destination="2" id="2" data-menu-offset="-10"  style="background-color: #222;">
+    <div class="row" style="margin-top: 5em;">
+	<iframe src="https://docs.google.com/presentation/d/1Eba1l4XqTW5yLHbzGtkMvoPlUMkjtspCVu45rpE_30o/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    </div>
+</div>
+
+<div class="row">
+	<div class="small-10 large-centered columns" data-magellan-destination="3" id="3" data-menu-offset="-10" style="padding-top: 5em;">
+	 <h1>Resources & Notes</h1>
+	  <h2>Compilers: <a href="https://github.com/less/less.js/wiki/GUI-compilers-that-use-LESS.js">LESS</a> | <a href="http://sass-lang.com/install">Sass</a></h2>
+	   <h2><a href="http://responsive.vermilion.com/compare.php">Detailed comparison</a> between Bootstrap and Foundation.</h2>
+	   <div class="panel">
+	    <p>This demo page is built in Fundation framework and Sass using Mixture. Bootstrap was used for LESS demo page and Foundation for Sass. </p>
+	    <p>Shoutout to other script used in this demo prism.js for code highlighting and skroll.js for smooth scroll.</p>
+	   </div>   
+	</div>
+</div>
+	
+    </div><!--end row-->
+{% endblock %}

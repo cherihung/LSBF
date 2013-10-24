@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title> SASS: An Overview</title>
+  <link href="assets/css/normalize.min.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="assets/css/foundation-app.min.css" rel="stylesheet" type="text/css" media="all" />
+   <link href="assets/css/prism.min.css" rel="stylesheet" type="text/css" media="all" />
+  <script src="assets/js/vendor/custom.modernizr.min.js"></script>
+  <script src="assets/js/skrollrfull.min.js"></script>
+  <script src="assets/js/vendor/prism.min.js"></script>
+  <style>
+    .fixed.nav {
+      overflow: hidden;
+      height: 45px;
+    }
+  </style>
+</head>
+<body>
+  
+<!--INTRO-->
+	<div class="row" id="intro" data-menu-offset="-100">
+	    <div class="small-6 large-12 columns">
+		<h3>SASS</h3>
+		<div class="panel">
+		    <p>Other than Foundation, other popular frameworks that use SASS include Compass, Bourbon and Suzy. It really is the most feature-rich pre-processing language. It is well-supported and has a large community. Since version 3, its main syntax is SCSS (.scss). It is more verbose than its previous SASS syntax (still supported). But the key advantage of SCSS is that all CSS3 syntax are also valid. This makes development and transition easier. <a href="http://sass-lang.com/">Official site</a> | <a href="https://github.com/nex3/sass">On Github</a></p>
+		</div>
+	    </div>
+	    <div class="small-6 show-for-small columns">
+		<div class="panel">
+		    <h3>You see me because you are small</h3>
+		    <p>Lorem ipsum Sit nulla lorem et takimata sit vero amet commodo stet justo. Aliquam sea dolor facilisi dolor duo. Eirmod dolor ut no. Ut et lorem no accusam minim dolor quis. Velit consectetuer dolor soluta ea lorem.</p>
+		</div>
+	    </div>
+	    	<!--    <div class="large-8 large-offset-3 columns">
+		<h3>SASS</h3>
+		<div class="panel"></div>
+	    </div>-->
+	</div>
+<!--INTRO-->
+<!--NAV-->
+	<div class="sticky contain-to-grid nav">
+	  <nav class="top-bar">
+	    <ul class="title-area">
+	      <!-- Title Area -->
+	      <li class="name">	      </li>
+	      <li class="toggle-topbar menu-icon"><a href="?"><span></span></a></li>
+	    </ul>
+	   <section class="top-bar-section" style="left: 0%;">
+	      <!-- Right Nav Section -->
+	      <ul class="left">
+		<li class="divider"></li>
+		 <li><a href="index.html">HOME</a></li>
+		
+		   <li class="divider"></li>
+		   <li><a href="#var">Variables</a></li>
+		
+		   <li class="divider"></li>
+		   <li><a href="#nes">Nesting</a></li>
+		
+		   <li class="divider"></li>
+		   <li><a href="#ipt">Imports</a></li>
+		
+		   <li class="divider"></li>
+		   <li><a href="#ext">Extend</a></li>
+		
+		   <li class="divider"></li>
+		   <li><a href="#mix">Mixin</a></li>
+		
+		   <li class="divider"></li>
+		   <li><a href="#fnc">Functions/Operation</a></li>
+		
+		   <li class="divider"></li>
+		   <li><a href="#con">Conditionals/Loops</a></li>
+		
+		<li class="divider"></li>
+	     </ul>
+	    </section></nav>
+	</div>
+<!--NAV-->
+<!--SECTIONS-->
+	
+	<div class="row" id="var" data-menu-offset="-70">
+	    <div class="large-12 columns">
+		<h1>Variables</h1>
+		<p><pre><code class='language-scss'>$color: #000000;
+$size:1em;
+$boolean:true
+$font:"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$calculation: darken($color, 15%);
+$cursor: "crosshair"</code></pre></p><p><pre><code class='language-scss'>font: $size $font;</code></pre></p>
+		<p>Compiles to:<pre><code class='language-css'>font: 1em "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;</code></pre></p><p><pre><code class='language-scss'>$style: solid !default;</code></pre>The <b>!default</b> is special to Sass variables. It sets, well, a default value. Foundation uses it quite extensively to better organize user style overrides.</p>
+	    </div>
+		<hr/>
+	</div>
+	
+	<div class="row" id="nes" data-menu-offset="-70">
+	    <div class="large-12 columns">
+		<h1>Nesting</h1>
+		<p><pre><code class='language-scss'>div {
+ h1 {
+   padding: 2em;
+
+    span {
+      font-weight: normal;
+    }
+
+ }
+ a {
+   display: none;
+ }
+}</code></pre>Sass supports nesting properties of CSS namespaced properties<pre><code class='language-scss'>.myfont {
+    font: {
+    family: Myraid;
+    size: 10px;
+    weight: normal;
+   }
+}</code></pre></p>
+		Compiles to:<pre><code class='language-css'>div h1 { padding: 2em; }
+div h1 span { font-weight: normal; }
+div a { display: none; }</code></pre><pre><code class='language-css'>.myfont {
+ font-family: Myraid;
+ font-size: 10px;
+ font-weight: normal;
+}</code></pre></p>
+	    </div>
+		<hr/>
+	</div>
+	
+	<div class="row" id="ipt" data-menu-offset="-70">
+	    <div class="large-12 columns">
+		<h1>Imports</h1>
+		<p><pre><code class='language-scss'>@import "lib";/* file imported and processed */
+
+.class {
+   @import "lib";/* file imported to class */
+}
+
+@import "file1", "file2";/* both file imported and processed */</code></pre></p>To output CSS @import, simply write it in CSS syntax<p><pre><code class='language-scss'>@import url("my.css");</code></pre></p>
+		Compiles to:<pre><code class='language-css'>@import url("my.css");</code></pre></p>
+	    </div>
+		<hr/>
+	</div>
+	
+	<div class="row" id="ext" data-menu-offset="-70">
+	    <div class="large-12 columns">
+		<h1>Extend</h1>
+		<p><pre><code class='language-scss'>.mixin {
+ color: #000;
+ height: 100px; 
+}
+.o {
+ @extend .mixin;
+ width: 100%;
+}</code></pre></p>
+		Compiles to:<pre><code class='language-css'>.mixin, .o {
+ color: #000;
+ height: 100px;
+}
+.o {
+ width: 100%;
+}</code></pre></p>
+	    </div>
+		<hr/>
+	</div>
+	
+	<div class="row" id="mix" data-menu-offset="-70">
+	    <div class="large-12 columns">
+		<h1>Mixin</h1>
+		<p><pre><code class='language-scss'>@mixin mybuttonHover ($bgdcolor:#e6e6e6, $fontcolor:#333333) {
+ background-color: $bgdcolor;
+ color: $fontcolor;
+ text-decoration:none;
+ background-position: 0 -99px;
+}
+a.mybutton:hover {
+ @include mybuttonHover();
+}
+a.mybutton1:hover {
+ @include mybuttonHover(#990000);
+}
+a.mybutton2:hover {
+ @include mybuttonHover($fontcolor:#000000);
+}
+@mixin box-shadow($shadows...) {
+ box-shadow: $shadows;
+ -moz-box-shadow: $shadows;
+ -webkit-box-shadow: $shadows;
+}
+.myshadow {
+ @include box-shadow(1px 2px 1px #000);
+}</code></pre></p>
+		Compiles to:<pre><code class='language-css'>a.mybutton:hover {
+ background-color: #e6e6e6;
+ color: #333333;
+ text-decoration: none;
+ background-position: 0 -99px;
+}
+a.mybutton1:hover {
+ background-color: #990000;
+ color: #333333;
+ text-decoration: none;
+ background-position: 0 -99px;
+}
+a.mybutton2:hover {
+ background-color: #e6e6e6;
+ color: black; /*compiled from hex */
+ text-decoration: none;
+ background-position: 0 -99px;
+}
+.myshadow {
+ box-shadow: 1px 2px 1px black;
+ -moz-box-shadow: 1px 2px 1px black;
+ -webkit-box-shadow: 1px 2px 1px black;
+}</code></pre></p>
+	    </div>
+		<hr/>
+	</div>
+	
+	<div class="row" id="fnc" data-menu-offset="-70">
+	    <div class="large-12 columns">
+		<h1>Functions/Operation</h1>
+		<h4><a href="http://sass-lang.com/documentation/Sass/Script/Functions.html">Full reference here</a></h4><p>Math calculation such as floor($var). Color manipulation such as lighten($color, 10%), convert HEX to HSL/RGBA, check type, or mix colors together. Surprisingly, Sass has only a few built-in math functions. But <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#function_directives">You can also write your own function directives.</a><pre><code class='language-scss'>$c: #990033;
+.box {
+ border-color: rgba($c, 0);
+ background: mix(#f00, #00f, 25%);
+}
+</code></pre></p><p><pre><code class='language-scss'>@function power ($x, $n) {
+ $ret: 1;
+
+ @for $i from 1 through $n {
+    $ret: $ret * $x;
+ } 
+
+ @return $ret;
+}
+
+//calculate line-height based on pearsonified.com golden ratio
+@mixin lineht($fontsize, $width, $gr: 1.61803) {
+  line-height: ceil(($gr - (1/(2*$gr))*(1 -($width/(power($fontsize*$gr,2))))) * $fontsize)+px;
+}
+p {
+ /* width: 1em + 2px; invalid operation*/
+ @include lineht(12,600);
+}</code></pre>(Power function from <a href="https://github.com/adambom/Sass-Math/blob/master/math.scss">Sass-Math</a> project)</p>
+		<p>Compiles to:<pre><code class='language-css'>.box {
+ border-color: rgba(153, 0, 51, 0);
+ background: #3f00bf;
+}</code></pre></p><p><pre><code class='language-css'>p {
+ line-height: 22px;
+}</code>Sass, surprisingly, has fewer math operations</pre></p>
+	    </div>
+		<hr/>
+	</div>
+	
+	<div class="row" id="con" data-menu-offset="-70">
+	    <div class="large-12 columns">
+		<h1>Conditionals/Loops</h1>
+		<h3><a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#control_directives">Full reference here</a></h3><p>Pretty easy to understand as it uses programming syntax: @if, @else, @for, @each, @while.<pre><code class='language-scss'>@mixin BeforeClass($fp, $fn) {
+@if $fp != null {
+[class^="social-icons-#{$fp}-"]:before,
+ [class*=" social-icons-#{$fp}-"]:before {
+ font-family: $fn;
+}
+} @else {
+ font-family: $fn;
+ font-size: 1em;
+ }
+}</code></pre></p>
+		
+	    </div>
+		<hr/>
+	</div>
+	
+<!--SECTIONS-->	
+
+   <script>
+      document.write('<script src=assets/js/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js><\/script>');
+    </script>
+<script src="assets/js/foundation.min.js"></script>
+<script>
+$(document).foundation();
+var s = skrollr.init();
+skrollr.menu.init(s, {
+    animate: true,
+    easing: 'sqrt',
+    duration: function(currentTop, targetTop) {
+        return 500;
+        //return Math.abs(currentTop - targetTop) * 10;
+    },
+});
+</script>
+</body>
+</html>

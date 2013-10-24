@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}Mixture + Bootstrap{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="{{ "skrollrfull.min.js" | asset_url }}"></script>    
+        {{ "bootstrap-app.min.css" | asset_url | stylesheet_tag }}
+        {{ "prism.min.css" | asset_url | stylesheet_tag }}
+        <script src="{{ "prism.min.js" | asset_url }}"></script>
+        <style>
+            body {
+                padding-top: 60px;
+            }
+        </style>
+    </head>
+    <body>
+            {% block content %}{% endblock %}
+              {% include "b/scripts" %}
+    </body>
+</html>

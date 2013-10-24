@@ -1,0 +1,143 @@
+@import (css) url("myless.css");
+
+@c: #990033;
+@c1: #000000;
+.box {
+border-color: rgba(red(@c), green(@c), blue(@c), 0);
+}
+.box {
+background-color: overlay(@c, #000000);
+}
+
+//calculate line-height based on pearsonified.com golden ratio
+.lineht(@fontsize, @width, @gr: 1.61803) {
+	line-height: ceil((@gr - (1/(2*@gr))*(1 - (@width/(pow(@fontsize*@gr,2))))) * @fontsize);
+}
+p {
+  width: 1em + 2px;
+  .lineht(12px,600px);
+}
+.BeforeClass(@fp, @fn) {
+            [class^="social-icons-@{fp}-"]:before,
+            [class*=" social-icons-@{fp}-"]:before {
+                font-family: @fn;
+        }
+}
+.BeforeClass(@fn) {
+                font-family: @fn;
+}
+h1 {
+	.BeforeClass(Verdana);
+}
+
+//namespace
+#type {
+  .button () {
+    display: block;
+    border: 1px solid black;
+    &:hover { background-color: white }
+  }
+}
+
+.me {
+	#type > .button
+}
+
+//extend feature like Sass
+.button {
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 5px 0 black;
+  a {
+    width: 20px;
+  }
+}
+
+.button-blue {
+  &:extend(.button all);
+  background: #37b9c1;
+}
+
+.mixin {
+ color: #000;
+ height: 100px; 
+}
+.o {
+  .mixin;
+  width: 100%;
+}
+.e {
+ &:extend(.mixin all);
+ width: 100%;
+}
+
+
+.mybuttonHover (@bgdcolor:#e6e6e6, @fontcolor:#333333) { 
+	background-color: @bgdcolor; 
+	color: @fontcolor;
+	text-decoration:none;
+        background-position: 0 -99px;
+}
+
+.box-shadow (@x:0; @y:0; @blur:1px; @color:#000000) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}
+
+
+.box-shadow2 (@shadow...) {
+  box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  -webkit-box-shadow: @shadow;
+}
+
+.myshadow {
+	.box-shadow(1px; 2px) !important;
+}
+
+.myshadow2 {
+	.box-shadow2(1px 2px 1px #030303) !important;
+}
+
+a.mybutton:hover {
+	.mybuttonHover();
+}
+a.mybutton1:hover {
+	.mybuttonHover(#990000);
+}
+a.mybutton2:hover {
+	.mybuttonHover(@fontcolor:#000000);
+}
+
+.tip() when (@d = right) {
+	border-left-color: @c;
+	left: @s;
+	top: 50%;
+	margin-top: -@s;
+}
+.tip() when (@d = left) {
+	border-right-color: @c;
+	right: @s;
+	top: 50%;
+	margin-top: -@s;
+}
+.tip() when (@d = top) {
+	border-bottom-color: @c;
+	bottom: @s;
+	left: -50%;
+}
+.tip() when (@d = bottom) {
+	border-top-color: @c;
+	top: @s;
+	left: -50%;
+}
+.myarrowTip() {
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	border-color: rgba(red(@c), green(@c), blue(@c), 0);
+	border-width: @s;
+}

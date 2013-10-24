@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Less, Sass, Bootstrap, Foundation</title>
+<script src="assets/js/vendor/prism.min.js"></script>
+  <script src="assets/js/skrollrfull.min.js"></script>
+  <link href="assets/css/normalize.min.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="assets/css/foundation-app.min.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="assets/css/prism.min.css" rel="stylesheet" type="text/css" media="all" />
+  <style type="text/css">
+    body {
+      padding-top: 1em;
+    }
+    h4 {
+      text-align: center;
+    }
+    .row {
+      height: 600px;
+      overflow: hidden;
+      padding-bottom: 60em;
+    }
+  </style>
+</head>
+<body>
+  
+	<div class="hero-unit">
+		<h1></h1>
+		<h2>A basic example.</h2>
+		<p>List populated from the model:</p>
+		<ol>
+			
+		</ol>
+		<p>Todays date: 23 October 2013. Model created: </p>
+	</div>
+
+   <script>
+      document.write('<script src=assets/js/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js><\/script>');
+    </script>
+<script src="assets/js/foundation.min.js"></script>
+<script>
+$(document).foundation();
+var s = skrollr.init();
+skrollr.menu.init(s, {
+    animate: true,
+    easing: 'sqrt',
+    duration: function(currentTop, targetTop) {
+        return 500;
+        //return Math.abs(currentTop - targetTop) * 10;
+    },
+});
+</script>
+</body>
+</html>

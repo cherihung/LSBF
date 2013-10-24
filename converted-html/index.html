@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Less, Sass, Bootstrap, Foundation</title>
+<script src="assets/js/vendor/prism.min.js"></script>
+  <script src="assets/js/skrollrfull.min.js"></script>
+  <link href="assets/css/normalize.min.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="assets/css/foundation-app.min.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="assets/css/prism.min.css" rel="stylesheet" type="text/css" media="all" />
+  <style type="text/css">
+    body {
+      padding-top: 1em;
+    }
+    h4 {
+      text-align: center;
+    }
+    .row {
+      height: 600px;
+      overflow: hidden;
+      padding-bottom: 60em;
+    }
+  </style>
+</head>
+<body>
+   
+    	<div data-magellan-expedition="fixed">
+	    <dl class="sub-nav">
+		
+		    <dd data-magellan-arrival="1"><a href="#1">1</a></dd>
+	       
+		    <dd data-magellan-arrival="2"><a href="#2">2</a></dd>
+	       
+		    <dd data-magellan-arrival="3"><a href="#3">3</a></dd>
+	       
+	    </dl>
+	</div><!--end magellan-->
+    <div class="row" id="block">
+        <div class="large-12 columns">
+	    <ul class="landing-button-group lang">
+	      <li class="small-12 large-6"><a href="lb.html" class="large less">LESS</a></li>
+	      <li class="small-12 large-6"><a href="sf.html" class="large sass">SASS</a></li>
+	    </ul>
+	    <ul class="landing-button-group framework">
+	      <li class="small-12 large-6"><a href="lb.html" class="large boot">Bootstrap</a></li>
+	      <li class="small-12 large-6"><a href="sf.html" class="large foun">Foundation</a></li>
+	    </ul>
+  <!--
+    <ul class="button-group lang">
+    <li><a href="lb.html" class="large button less">LESS</a></li>
+    <li><a href="sf.html" class="large button sass">SASS</a></li>
+  </ul>
+  <ul class="button-group framework">
+    <li><a href="lb.html" class="large button boot">Bootstrap</a></li>
+    <li><a href="sf.html" class="large button foun">Foundation</a></li>
+  </ul>-->
+        </div>
+	    </div>
+    <!--
+    <div class="row">
+  <div class="large-10 push-2 columns">10</div>
+  <div class="small-2 pull-10 columns">2, last</div>
+</div>-->
+    <div class="row">
+	<div class="small-6 large-centered small-centered columns" data-magellan-destination="1" id="1" data-menu-offset="-50">
+	 <p>LESS, SASS, Foundation, Bootstrap: A Comparison Demo</p>
+	 <h1>Agenda</h1>
+	   <p> <h3>LESS 1.4 vs Sass 3.2</h3>
+	    <h5>General Comparision</h5>
+	    <h5>Syntax Comparision</h5>
+	   </p>
+	   <p>
+	    <h3>Foundation 4 vs Bootstrap 3</h3>
+	    <h5>Package Size</h5>
+	    <h5>Components</h5></p>
+	   <p>
+	    <h3>LESS/Sass in Frameworks</h3>
+	   </p>
+	</div>
+    </div>
+<div class="large-12 columns" data-magellan-destination="2" id="2" data-menu-offset="-10"  style="background-color: #222;">
+    <div class="row" style="margin-top: 5em;">
+	<iframe src="https://docs.google.com/presentation/d/1Eba1l4XqTW5yLHbzGtkMvoPlUMkjtspCVu45rpE_30o/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    </div>
+</div>
+<div class="row">
+	<div class="small-10 large-centered columns" data-magellan-destination="3" id="3" data-menu-offset="-10" style="padding-top: 5em;">
+	 <h1>Resources & Notes</h1>
+	  <h2>Compilers: <a href="https://github.com/less/less.js/wiki/GUI-compilers-that-use-LESS.js">LESS</a> | <a href="http://sass-lang.com/install">Sass</a></h2>
+	   <h2><a href="http://responsive.vermilion.com/compare.php">Detailed comparison</a> between Bootstrap and Foundation.</h2>
+	   <div class="panel">
+	    <p>This demo page is built in Fundation framework and Sass using Mixture. Bootstrap was used for LESS demo page and Foundation for Sass. </p>
+	    <p>Shoutout to other script used in this demo prism.js for code highlighting and skroll.js for smooth scroll.</p>
+	   </div>   
+	</div>
+</div>
+ <!--   
+    <div class="large-12 columns slide" data-0="opacity:0" data-1200="opacity:1" data-magellan-destination="2" id="2" data-menu-offset="-50" style="background-color:rgb(255,227,135)">
+	<div class="row">
+	    <p>
+		<h1>A Sidenote: .SASS vs .SCSS</h1>
+		<h3>SCSS is now the main syntax of Sass</h3>
+		<h3>All CSS3 rules are valid in SCCS</h3>
+		<h3>SASS is much more succinct, tab-syntax but it really isn't widely used anymore</h3>
+		<h3>Only SCSS in this presentation</h3>
+	    </p>
+	</div>
+   <div class="large-12 columns slide" data-1200="opacity:0" data-1500="opacity:1" data-magellan-destination="3" id="3" data-menu-offset="-50" style="background-color:rgb(255,227,135)">
+	<div class="row">
+	    <p>
+		<h1>LESS & Sass - Generally Speaking</h1>
+		<h3>Extends CSS to be more programmatic</h3>
+		<h3>VERY similar in what they can do</h3>
+		<h3>Both have tons of features</h3>
+		<h3>Require compilers (client, server, local)</h3>
+			<h5>LESS - client & server (node.js), Sass - server (Ruby)</h5>
+	    </p>
+	</div>
+   <div class="large-12 columns slide" data-1600="opacity:0" data-2000="opacity:1" data-magellan-destination="4" id="4" data-menu-offset="-50" style="background-color:rgb(255,227,135)">
+	<div class="row">
+	    <p>
+		<h1>LESS & Sass - Generally Speaking</h1>
+		<h3>More often than not, you'll only need these from either langs:<br/>variables <br/> nesting<br/> imports<br/> mixins<br/> operations<br/> functions </h3>
+<h3>they work equally well with some minor +/- for each</h3>
+	    </p>
+	</div>
+   <div class="large-12 columns slide" data-2000="opacity:0" data-2500="opacity:1" data-magellan-destination="5" id="5" data-menu-offset="-50" style="background-color:rgb(255,227,135)">
+	<div class="row">
+	    <p>
+		<h1>LESS vs Sass: Which is better?</h1>
+		<h3>In blogosphere throwdowns, Sass 3 almost always wins. But LESS 1.4 is gaining. (<a href="http://css-tricks.com/sass-vs-less/">more</a>) </h3>
+<h3>they work equally well with some minor +/- for each</h3>
+	    </p>
+	</div>-->
+    </div><!--end row-->
+
+   <script>
+      document.write('<script src=assets/js/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js><\/script>');
+    </script>
+<script src="assets/js/foundation.min.js"></script>
+<script>
+$(document).foundation();
+var s = skrollr.init();
+skrollr.menu.init(s, {
+    animate: true,
+    easing: 'sqrt',
+    duration: function(currentTop, targetTop) {
+        return 500;
+        //return Math.abs(currentTop - targetTop) * 10;
+    },
+});
+</script>
+</body>
+</html>

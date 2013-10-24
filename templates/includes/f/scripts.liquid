@@ -1,0 +1,18 @@
+ <script>
+      document.write('<script src=assets/js/vendor/'
+        + ('__proto__' in {} ? 'zepto' : 'jquery')
+        + '.js><\/script>');
+    </script>
+{{ "foundation.min.js" | asset_url | script_tag }}
+<script>
+$(document).foundation();
+var s = skrollr.init();
+skrollr.menu.init(s, {
+    animate: true,
+    easing: 'sqrt',
+    duration: function(currentTop, targetTop) {
+        return 500;
+        //return Math.abs(currentTop - targetTop) * 10;
+    },
+});
+</script>

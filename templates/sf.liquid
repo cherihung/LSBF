@@ -1,0 +1,62 @@
+{% model "sass.json" %}
+{% layout "layout_foundation" %}
+{% block title %} {{ model.title }}{% endblock %}
+{% block content %}
+<!--INTRO-->
+	<div class="row" id="intro" data-menu-offset="-100">
+	    <div class="small-6 large-12 columns">
+		<h3>SASS</h3>
+		<div class="panel">
+		    <p>Other than Foundation, other popular frameworks that use SASS include Compass, Bourbon and Suzy. It really is the most feature-rich pre-processing language. It is well-supported and has a large community. Since version 3, its main syntax is SCSS (.scss). It is more verbose than its previous SASS syntax (still supported). But the key advantage of SCSS is that all CSS3 syntax are also valid. This makes development and transition easier. <a href="http://sass-lang.com/">Official site</a> | <a href="https://github.com/nex3/sass">On Github</a></p>
+		</div>
+	    </div>
+	    <div class="small-6 show-for-small columns">
+		<div class="panel">
+		    <h3>You see me because you are small</h3>
+		    {{ 1 | lorem_ipsum:'p'}}
+		</div>
+	    </div>
+	    	<!--    <div class="large-8 large-offset-3 columns">
+		<h3>SASS</h3>
+		<div class="panel">{{ model.intro }}</div>
+	    </div>-->
+	</div>
+<!--INTRO-->
+
+<!--NAV-->
+	<div class="sticky contain-to-grid nav">
+	  <nav class="top-bar">
+	    <ul class="title-area">
+	      <!-- Title Area -->
+	      <li class="name">	      </li>
+	      <li class="toggle-topbar menu-icon"><a href="?"><span></span></a></li>
+	    </ul>
+	   <section class="top-bar-section" style="left: 0%;">
+	      <!-- Right Nav Section -->
+	      <ul class="left">
+		<li class="divider"></li>
+		 <li><a href="index.html">HOME</a></li>
+		{% for item in model.style-topics %}
+		   <li class="divider"></li>
+		   <li><a href="#{{ item.id}}">{{ item.name }}</a></li>
+		{% endfor %}
+		<li class="divider"></li>
+	     </ul>
+	    </section></nav>
+	</div>
+<!--NAV-->
+
+<!--SECTIONS-->
+	{% for item in model.style-topics %}
+	<div class="row" id="{{ item.id }}" data-menu-offset="-70">
+	    <div class="large-12 columns">
+		<h1>{{ item.name }}</h1>
+		{{ item.code }}
+		{{ item.compiled }}
+	    </div>
+		<hr/>
+	</div>
+	{% endfor %}
+<!--SECTIONS-->	
+
+{% endblock %}
